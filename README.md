@@ -51,7 +51,7 @@ python model.py
 ![alt text](assets/Gradio.png)
 
 ```
-python app_gradio.py
+python app.py
 ```
 
 ## Usage
