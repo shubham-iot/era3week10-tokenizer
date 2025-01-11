@@ -1,16 +1,27 @@
 import gradio as gr
-from model_old import BPEPunjabiTokenizer
+from model import BPEPunjabiTokenizer
+
+
 
 # Initialize tokenizer globally
 tokenizer = None
 
+
+
+
 def initialize_tokenizer():
     global tokenizer
+    
     try:
-        tokenizer = BPEPunjabiTokenizer(corpus_path="pa_corpus_cleaned.txt", max_vocab_size=5000, sample_size=20000)
-        return "✅ Tokenizer initialized successfully!"
+        # Load the pre-trained tokenizer instead of training
+        # Load the pre-trained tokenizer
+        tokenizer = BPEPunjabiTokenizer.load(directory="./saved_models", filename="bpe_tokenizer.pkl")
+
+        return "✅ Tokenizer loaded successfully!"
     except Exception as e:
-        return f"❌ Error initializing tokenizer: {str(e)}"
+        return f"❌ Error loading tokenizer: {str(e)}"
+    
+
 
 def process_text(text):
     if tokenizer is None:
@@ -87,7 +98,6 @@ with gr.Blocks(title="Punjabi BPE Tokenizer") as demo:
     # Example sentences
     gr.Examples(
         examples=[
-            ["ਮੈਂ ਤੁਹਾਨੂੰ ਪਿਆਰ ਕਰਦਾ ਹਾਂ"],
             ["ਤੁਸੀਂ ਕੀ ਕਰ ਰਹੇ ਹੋ?"],
             ["ਮੈਨੂੰ ਚਾਹ ਪੀਣੀ ਹੈ"],
             ["ਇਹ ਬਹੁਤ ਵਧੀਆ ਹੈ"],
@@ -126,4 +136,3 @@ with gr.Blocks(title="Punjabi BPE Tokenizer") as demo:
 
 if __name__ == "__main__":
     demo.launch()
-

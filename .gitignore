@@ -7,5 +7,5 @@ pawiki-latest.xml.bz2
 .gradio  
 pa_corpus.txt
 pa_corpus_cleaned.txt
-
+app_gradio.py
 
