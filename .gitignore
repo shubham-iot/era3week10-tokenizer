@@ -1,0 +1,11 @@
+/*.xml.bz2
+__pycache__
+/gitignore
+*.xml.bz2/
+venv
+pawiki-latest.xml.bz2
+.gradio  
+pa_corpus.txt
+pa_corpus_cleaned.txt
+
+

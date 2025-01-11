@@ -1,0 +1,5 @@
+numpy
+gradio
+requests 
+tqdm 
+humanize
